@@ -1,0 +1,108 @@
+1 THREE.OrthographicCamera(left, right, top, bottom, near, far)
+正交投影
+2 THREE.PerspectiveCamera(fov, aspect, near, far)
+   fov 竖直方向的张角
+   aspect = width/height
+3 object
+  //长方体THREE.CubeGeometry(width, height, depth, widthSegments, heightSegments, depthSegment s)
+  //长方形THREE.PlaneGeometry(width, height, widthSegments, heightSegments)
+  //球体THREE.SphereGeometry(radius, segmentsWidth, segmentsHeight, phiStart, phiLength, thetaStart, thetaLength)
+  //圆形THREE.CircleGeometry(radius, segments, thetaStart, thetaLength)
+  //圆柱THREE.CylinderGeometry(radiusTop, radiusBottom, height, radiusSegments, heightSegmen
+ts, openEnded)
+  //正4面体THREE.TetrahedronGeometry(radius, detail) 
+  //正8面体THREE.OctahedronGeometry(radius, detail) 
+  //正20面体THREE.IcosahedronGeometry(radius, detail)
+  //圆环面THREE.TorusGeometry(radius, tube, radialSegments, tubularSegments, arc)
+  //父类
+  THREE.Geometry()
+
+  // 初始化几何形状
+var geometry = new THREE.Geometry();
+// 设置顶点位置
+// 顶部4顶点
+geometry.vertices.push(new THREE.Vector3(-1, 2, -1)); //创建顶点
+geometry.vertices.push(new THREE.Vector3(1, 2, -1)); 
+geometry.vertices.push(new THREE.Vector3(1, 2, 1)); 
+geometry.vertices.push(new THREE.Vector3(-1, 2, 1)); 
+// 底部4顶点
+geometry.vertices.push(new THREE.Vector3(-2, 0, -2)); 
+geometry.vertices.push(new THREE.Vector3(2, 0, -2)); 
+geometry.vertices.push(new THREE.Vector3(2, 0, 2)); 
+geometry.vertices.push(new THREE.Vector3(-2, 0, 2));
+// 设置顶点连接情况
+// 顶面
+geometry.faces.push(new THREE.Face4(0, 1, 2, 3)); // 底面
+geometry.faces.push(new THREE.Face4(4, 5, 6, 7)); // 四个侧面
+Face3//3个面
+
+4 材质
+side:渲染面片正面或反面,默认正面THREE.FrontSide 
+THREE.BackSide,THREE.DoubleSide
+wireframe:是否渲染线而非面
+map: 使用纹理贴图
+
+lambert漫反射
+Idiffuse = Kd*Id*cos(theta)
+MeshLambertMaterial
+color设置材质颜色
+ambient设置材质反射能力
+emissive材质的自发光颜色
+镜面反射
+MeshPhongMaterial
+specular高光颜色
+shininess值越大，光斑越小
+法向材质
+
+动画
+var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame
+|| window.webkitRequestAnimationFrame
+|| window.msRequestAnimationFrame;
+window.requestAnimationFrame = requestAnimationFrame;
+
+环境光
+var light = new THREE.AmbientLight(0xffffff); scene.add(light);
+点光源
+THREE.PointLight(hex, intensity, distance)
+hex十六进制的颜色值,intensity 是亮度,缺省值为1,表示 100%亮 度; distance 是光源最远照射到的距离,缺省值为0。
+平行光
+THREE.DirectionalLight(hex, intensity)
+聚光灯
+THREE.SpotLight(hex, intensity, distance, angle, exponent)
+angle是是聚光灯的张角,缺省值是Math.PI/3,最大值是Math.PI/2,
+exponent是光强在偏离target的衰减指数
+light.position.set(x1, y1, z1); 
+light.target.position.set(x2, y2, z2);
+
+对于光源以及所有要产生阴影的物体调用:
+xxx.castShadow = true;
+对于接收阴影的物体调用:
+xxx.receiveShadow = true;
+
+
+obj.scale rotation position
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
